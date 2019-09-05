@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+### BEGIN INIT INFO
+# Provides:          npu_transfer_proxy
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Should-Start:      $network $time
+# Should-Stop:       $network $time
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/ Stop npu daemon
+# Description:       This service script facilitates startup and shutdown of
+#                    npu service
+### END INIT INFO
+
+case "$1" in
+  start)
+    /usr/bin/npu_transfer_proxy &
+    ;;
+  stop)
+    ps -ef | grep npu_transfer_proxy | grep -v grep | awk '{print $2}' | while read pid
+    do
+	kill -9 $pid
+    done
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    printf 'Usage: %s {start|stop|restart}\n' "$prog"
+    exit 1
+    ;;
+esac
+exit 0
+

@@ -1,2 +1,3 @@
-# slave_mobilenet_ssd
-Mobilenet_ssd demo for RK1808 AI stick slave mode
+Chinese guide: http://t.rock-chips.com/wiki.php?mod=view&id=71
+
+English guide: http://t.rock-chips.com/en/wiki.php?mod=view&id=58
